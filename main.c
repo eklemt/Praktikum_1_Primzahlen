@@ -84,11 +84,29 @@ int main() {
                     printf("Primzahl: %d \n", i);
                 }
 
-                
-
-
-
             } 
+
+            if(isPrimeNumber) {
+                // return 1 and user input as Primfaktoren
+                printf("(Primzahl) Deine Primfaktoren sind: 1 und %d \n", userInputNumber);
+            } else {
+                printf("(keine Primzahl) Deine Primfaktoren sind: ");
+                if(userInputNumber % 2) {
+                    while(userInputNumber % 2 == 0){
+                    printf("%3d", 2);
+                    }
+                } else {
+                    for(int i = 3; i <= userInputNumber; i+2) {
+                        while(userInputNumber % i == 0) {
+                            printf("%3d", i);
+                        }
+                    }
+                }
+            }
+
+            
+            
+
         }
     }
         
