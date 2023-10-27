@@ -98,9 +98,7 @@ int main() {
                 }
 
                 // i + 2, da gerade teiler übersprungen werden, wir haben ja schon durch zwei geteilt, schleife beginnt bei 3
-                for (int i = 3; i*i <= userInputNumber; i = i+2) 
-                { 
-                    // While i divides n, print i and divide n
+                for (int i = 3; i*i <= userInputNumber; i = i+2) { 
                     // während wir durch den schleifenindex mit modulo = 0 teilen können, teiler ausgeben und weiter durch selben teiler teilen 
                     while (userInputNumber%i == 0) 
                     { 
@@ -108,17 +106,7 @@ int main() {
                         userInputNumber = userInputNumber/i; 
                     } 
                 } 
-                // This condition is to handle the case when n  
-                // is a prime number greater than 2 
-                if (userInputNumber > 2) 
-                    printf ("%d ", userInputNumber); 
             }
-
         }
     }
-        
-
-    
-
-   
 }
