@@ -34,12 +34,12 @@ int main() {
 
 
         if (userInputNumber <= 1) {
-            isPrimeNumber = false; // 1 and any negative number are not prime
+            isPrimeNumber = false; // 1 und 0 sind keine Primzahlen
         } else {
             for (int i = 2; i <= userInputNumber/2; i++) { 
                 if (userInputNumber % i == 0) { 
                     isPrimeNumber = false;
-                    break; // No need to continue checking
+                    break; // Schleife an dieser Stelle beenden
                 }
             }
         }
@@ -58,7 +58,6 @@ int main() {
 
 
         if(userInputNumber > 1000) {
-
             printf("Zahl zu gr0ß, sry!  \n");
         } else {
 
@@ -87,25 +86,33 @@ int main() {
             } 
 
             if(isPrimeNumber) {
-                // return 1 and user input as Primfaktoren
+                // bei Primzahlen einfach 1 und userInput wieder ausgeben
                 printf("(Primzahl) Deine Primfaktoren sind: 1 und %d \n", userInputNumber);
             } else {
                 printf("(keine Primzahl) Deine Primfaktoren sind: ");
-                if(userInputNumber % 2) {
-                    while(userInputNumber % 2 == 0){
-                    printf("%3d", 2);
-                    }
-                } else {
-                    for(int i = 3; i <= userInputNumber; i+2) {
-                        while(userInputNumber % i == 0) {
-                            printf("%3d", i);
-                        }
-                    }
-                }
-            }
 
-            
-            
+                // solange durch zwei teilen, bis modulo != 0
+                while (userInputNumber%2 == 0) { 
+                    printf("%d ", 2); 
+                    userInputNumber = userInputNumber/2; 
+                }
+
+                // i + 2, da gerade teiler übersprungen werden, wir haben ja schon durch zwei geteilt, schleife beginnt bei 3
+                for (int i = 3; i*i <= userInputNumber; i = i+2) 
+                { 
+                    // While i divides n, print i and divide n
+                    // während wir durch den schleifenindex mit modulo = 0 teilen können, teiler ausgeben und weiter durch selben teiler teilen 
+                    while (userInputNumber%i == 0) 
+                    { 
+                        printf("%d ", i); 
+                        userInputNumber = userInputNumber/i; 
+                    } 
+                } 
+                // This condition is to handle the case when n  
+                // is a prime number greater than 2 
+                if (userInputNumber > 2) 
+                    printf ("%d ", userInputNumber); 
+            }
 
         }
     }
