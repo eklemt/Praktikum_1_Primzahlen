@@ -60,7 +60,7 @@ int main() {
         if(userInputNumber > 1000) {
             printf("Zahl zu gr0ß, sry!  \n");
         } else {
-
+            printf("Primzahlen bis zu deiner Zahl:\n");
             // schleife beginnt bei 1, da 0 keine Primzahl ist, und somit ausgeschlossen werden kann
             for (int i = 2; i < userInputNumber; i++) { 
 
@@ -80,10 +80,12 @@ int main() {
                 } 
 
                 if(primeNumberList) {
-                    printf("Primzahl: %d \n", i);
+                    
+                    printf("%d ", i);
                 }
 
             } 
+            printf("\n\n");
 
             if(isPrimeNumber) {
                 // bei Primzahlen einfach 1 und userInput wieder ausgeben
@@ -97,14 +99,39 @@ int main() {
                     userInputNumber = userInputNumber/2; 
                 }
 
-                // i + 2, da gerade teiler übersprungen werden, wir haben ja schon durch zwei geteilt, schleife beginnt bei 3
-                for (int i = 3; i*i <= userInputNumber; i = i+2) { 
-                    // während wir durch den schleifenindex mit modulo = 0 teilen können, teiler ausgeben und weiter durch selben teiler teilen 
-                    while (userInputNumber%i == 0) 
-                    { 
-                        printf("%d ", i); 
-                        userInputNumber = userInputNumber/i; 
-                    } 
+                //find i: add to i until 
+
+                for (int divisor = 3; divisor <= userInputNumber; divisor++) { 
+
+                   
+                   //find divisor: check if i is primenumber, if yes
+                   // divide by i until modulo != 0,
+                   //
+                   //
+                   // else add to i and check again
+
+                    //check if counter in loop is prime, and can be used as divisor in prime factorization
+                    bool divisorIsPrime = true;
+                    for (int i = 2; i <= divisor/2; i++) { 
+                        if (divisor % i == 0) { 
+                            divisorIsPrime = false;
+                            break; // Schleife an dieser Stelle beenden
+                        }
+                    }
+                    if(divisorIsPrime) {
+                        while (userInputNumber%divisor == 0) { 
+                            printf("%d ", divisor); 
+                            userInputNumber = userInputNumber/divisor; 
+                        } 
+                    } else {
+                        //divisor is not prime and cannot be used as divisor in primefactorization, therefore continue loop
+                        continue;
+                    }
+
+
+
+                   
+                    
                 } 
             }
         }
